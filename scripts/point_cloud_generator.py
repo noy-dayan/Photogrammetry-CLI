@@ -23,7 +23,7 @@ class PointCloudGenerator:
     - verboseLevel (str): Verbosity level for AliceVision logging.
 
     Methods:
-    - silent_mkdir(dir): Creates a directory if it doesn't exist silently.
+    - mkdir(dir): Creates a directory if it doesn't exist silently.
     - run_1_cameraInit(): Runs camera initialization using AliceVision.
     - run_2_featureExtraction(imagesPerGroup=40): Runs feature extraction from images.
     - run_3_imageMatching(): Matches images based on features.
@@ -67,20 +67,6 @@ class PointCloudGenerator:
         # Set the verbosity level for logging
         self.verboseLevel = "\"error\""  # Detail of the logs (error, info, etc.)
 
-    @staticmethod
-    def silent_mkdir(dir_str):
-        """
-        Create a directory if it doesn't exist.
-
-        Parameters:
-        - dir_str (str): Directory path.
-        """
-        # Function to create a directory if it doesn't exist
-        try:
-            os.mkdir(dir_str)
-        except:
-            pass  # Ignore errors if the directory already exists
-
     def run_1_cameraInit(self):
         """
         Task for camera initialization using AliceVision.
@@ -93,7 +79,7 @@ class PointCloudGenerator:
         - AliceVision cameraInit tool
         """
         task = "\\tasks\\1_CameraInit"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print(
             "\033[35m════════════════════════════════ 1/13 CAMERA INITIALIZATION ════════════════════════════════\033[0m")
@@ -132,7 +118,7 @@ class PointCloudGenerator:
         - AliceVision featureExtraction tool
         """
         task = "\\tasks\\2_FeatureExtraction"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print(
             "\033[35m════════════════════════════════ 2/13 FEATURE EXTRACTION ════════════════════════════════\033[0m")
@@ -170,7 +156,7 @@ class PointCloudGenerator:
         - AliceVision imageMatching tool
         """
         task = "\\tasks\\3_ImageMatching"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 3/13 IMAGE MATCHING ════════════════════════════════\033[0m")
 
@@ -206,7 +192,7 @@ class PointCloudGenerator:
         - AliceVision featureMatching tool
         """
         task = "\\tasks\\4_featureMatching"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 4/13 FEATURE MATCHING ════════════════════════════════\033[0m")
 
@@ -261,7 +247,7 @@ class PointCloudGenerator:
         - AliceVision incrementalSfm tool
         """
         task = "\\tasks\\5_structureFromMotion"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print(
             "\033[35m════════════════════════════════ 5/13 STRUCTURE FROM MOTION ════════════════════════════════\033[0m")
@@ -297,7 +283,7 @@ class PointCloudGenerator:
         - AliceVision prepareDenseScene tool
         """
         task = "\\tasks\\6_PrepareDenseScene"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print(
             "\033[35m════════════════════════════════ 6/13 PREPARE DENSE SCENE ════════════════════════════════\033[0m")
@@ -333,7 +319,7 @@ class PointCloudGenerator:
         - AliceVision depthMapEstimation tool
         """
         task = "\\tasks\\7_DepthMap"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 7/13 DEPTH MAP ════════════════════════════════\033[0m")
         _input = f"\"{self.project_path}\\tasks\\5_structureFromMotion\\sfm.abc\""
@@ -370,7 +356,7 @@ class PointCloudGenerator:
         - AliceVision depthMapFilter tool
         """
         task = "\\tasks\\8_DepthMapFilter"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 8/13 DEPTH MAP FILTER ════════════════════════════════\033[0m")
         _input = f"\"{self.project_path}\\tasks\\5_structureFromMotion\\sfm.abc\""
@@ -403,7 +389,7 @@ class PointCloudGenerator:
         - AliceVision meshing tool
         """
         task = "\\tasks\\9_Meshing"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 9/13 MESHING ════════════════════════════════\033[0m")
         _input = f"\"{self.project_path}\\tasks\\5_structureFromMotion\\sfm.abc\""
@@ -438,7 +424,7 @@ class PointCloudGenerator:
         - AliceVision meshFiltering tool
         """
         task = "\\tasks\\10_MeshFiltering"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 10/13 MESH FILTERING ════════════════════════════════\033[0m")
         inputMesh = f"\"{self.project_path}\\tasks\\9_Meshing\\mesh.obj\""
@@ -469,7 +455,7 @@ class PointCloudGenerator:
         - AliceVision meshDecimation tool
         """
         task = "\\tasks\\11_MeshDecimate"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 11/13 MESH DECIMATE ════════════════════════════════\033[0m")
         inputMesh = f"\"{self.project_path}\\tasks\\10_MeshFiltering\\mesh.obj\""
@@ -500,7 +486,7 @@ class PointCloudGenerator:
         - AliceVision meshResampling tool
         """
         task = "\\tasks\\12_MeshResampling"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 12/13 MESH RESAMPLING ════════════════════════════════\033[0m")
         inputMesh = f"\"{self.project_path}\\tasks\\11_MeshDecimate\\mesh.obj\""
@@ -533,7 +519,7 @@ class PointCloudGenerator:
         - AliceVision meshTexturing tool
         """
         task = "\\tasks\\13_Texturing"
-        PointCloudGenerator.silent_mkdir(self.project_path + task)
+        mkdir(self.project_path + task)
 
         print("\033[35m════════════════════════════════ 13/13 TEXTURING ════════════════════════════════\033[0m")
         _input = f"\"{self.project_path}\\tasks\\9_Meshing\\densePointCloud.abc\""
@@ -599,7 +585,7 @@ class PointCloudGenerator:
         mesh decimation, mesh resampling, mesh texturing, and finally conversion of the textured
         mesh to a point cloud.
         """
-        PointCloudGenerator.silent_mkdir(f"{self.project_path}\\tasks")
+        mkdir(f"{self.project_path}\\tasks")
 
         # Run all the tasks in sequence
         startTime = time.time()
