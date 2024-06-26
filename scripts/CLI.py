@@ -1,9 +1,10 @@
 import os
 import subprocess
-from scripts.video_to_images_generator import extract_frames
-from scripts.user_manual import *
-from scripts.point_cloud_generator import PointCloudGenerator
 import pyCloudCompare as pcc
+from video_to_images_generator import extract_frames
+from user_manual import *
+from point_cloud_generator import PointCloudGenerator
+from utils import *
 
 
 def check_admin_permission():
@@ -30,9 +31,9 @@ def exec_cmd(command):
                 print(line, end='')
         process.stderr.close()
     except subprocess.CalledProcessError as e:
-        print(f"[ERROR] {e}")
+        print_err(e)
     except Exception as e:
-        print(f"[ERROR] {e}")
+        print_err(e)
 
 
 def run_batch_file_and_command(batch_file, command):
@@ -40,9 +41,9 @@ def run_batch_file_and_command(batch_file, command):
         # Call the batch file and command directly
         exec_cmd(f'call {batch_file} && {command}')
     except subprocess.CalledProcessError as e:
-        print(f"[ERROR] {e}")
+        print_err(e)
     except Exception as e:
-        print(f"[ERROR] {e}")
+        print_err(e)
 
 
 def video_to_image(args):
@@ -51,7 +52,7 @@ def video_to_image(args):
         return 2
 
     elif len(args) < 3:
-        print("[ERROR] Please provide the video path and project path.")
+        print_err("Please provide the video path and project path.")
         return 1
 
     video_path = args[1]
@@ -77,7 +78,7 @@ def generate_point_cloud(args):
         return 2
 
     elif len(args) < 2:
-        print("[ERROR] Please provide the project path (must contain a file named 'images').")
+        print_err("Please provide the project path (must contain a file named 'images').")
         return 1
 
     project_path = args[1]
@@ -87,11 +88,11 @@ def generate_point_cloud(args):
 
 def combine_point_clouds(args):
     if len(args) == 2 and (args[1] == "-h" or args[1] == "-help"):
-        help_to_string("gpc_help")
+        help_to_string("cpc_help")
         return 2
 
     elif len(args) < 3:
-        print("Error: Please provide paths to two point clouds.")
+        print_err("Please provide paths to two point clouds.")
         return 1
 
     cloud1_path = args[1]
@@ -150,7 +151,7 @@ def combine_point_clouds(args):
         #print(f"Combined point cloud saved to {output_path}")
 
     except Exception as e:
-        print(e)
+        print_err(e)
 
 
 def cli(cmd):
@@ -172,7 +173,4 @@ def cli(cmd):
         combine_point_clouds(args)
 
     else:
-        print("Invalid command, type -help for viewing the user manual.")
-
-
-
+        print_err("Invalid command, type \033[35m-help\033[0m for viewing the user manual.")
