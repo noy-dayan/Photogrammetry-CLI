@@ -32,10 +32,12 @@ Briefly describe the purpose of the project. Explain what problem it solves or w
 ## Installation
 
 ### Prerequisites
-
-- Python 3.11 (only tested on this version but might work on other 3.x versions)
-<!---- Required Python packages (listed in `requirements.txt`)-->
+- **Operating System:** Windows (only supported on Windows)
+- **Python Version:** Python 3.11 (tested on this version but might work on other 3.x versions)
+- **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance but not necessary)
 - Meshroom (see below for setup instructions)
+
+<!---- Required Python packages (listed in `requirements.txt`)-->
 <!---
 ### Install via pip
 
