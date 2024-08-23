@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE.md)
 [![Python Version](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/downloads/)
 [![Meshroom Version](https://img.shields.io/badge/meshroom-2023.3.0-purple.svg)](https://github.com/alicevision/Meshroom/releases/tag/v2023.3.0)
-
+[![CloudCompare Version](https://img.shields.io/badge/cloudcompare-2.13.2-purple.svg)](https://cloudcompare-org.danielgm.net/release/CloudCompare_v2.13.2_setup_x64.exe)
 ## Introduction
 
 Photogrammetry-CLI is a command-line interface tool designed for photogrammetry tasks, including extracting frames from videos, generating point clouds from images, and combining point clouds into a unified model. Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for the photogrammetry pipeline, this tool is optimized for Windows and provides an easy way to process and analyze 3D data from video sources.
@@ -25,7 +25,8 @@ Photogrammetry-CLI is a command-line interface tool designed for photogrammetry 
 ### Prerequisites
 - **Operating System:** Windows (only supported on Windows)
 - **Python Version:** Python 3.11 (tested on this version but might work on other 3.x versions)
-- **Meshroom's AliceVision:** Required for photogrammetry processing (see setup instructions below)
+- **Meshroom's AliceVision:** Required for photogrammetry processing [(refer to setup instructions below)](#meshrooms-alicevision-setup)
+- **CloudCompare:** Required for ICP alignment and converting meshes to point clouds [(refer to setup instructions below)](#cloudcompare-setup)
 - **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance)
 
 ### Dependencies
@@ -54,6 +55,15 @@ pip install -r requirements.txt
      configure.bat
      ```
    - This script will automatically configure the `ALICEVISION_ROOT` environment variable to point to the `aliceVision` folder.
+
+### CloudCompare Setup
+
+1. **Download CloudCompare:**
+   - Download CloudCompare from the following link:  
+     [CloudCompare v2.13.2 for Windows 64-bit](https://cloudcompare-org.danielgm.net/release/CloudCompare_v2.13.2_setup_x64.exe)
+
+2. **Extract the Zip File:**
+   - Run the downloaded setup file and install CloudCompare to the following directory: `C:\\Program Files\\CloudCompare`
 
 ## Usage
 To start using the CLI, simply run the `run.bat` file or execute the `run.py` script directly. This will initiate the CLI and provide access to the available commands.
