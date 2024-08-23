@@ -28,7 +28,7 @@ Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for 
 - **Operating System:** Windows (only supported on Windows)
 - **Python Version:** Python 3.11 (tested on this version but might work on other 3.x versions)
 - **Meshroom's AliceVision:** Required for photogrammetry processing [(refer to setup instructions below)](#meshrooms-alicevision-setup)
-- **CloudCompare:** Required for ICP alignment and converting meshes to point clouds [(refer to setup instructions below)](#cloudcompare-setup)
+- **CloudCompare:** Required for ICP alignment and mesh-to-cloud conversion [(refer to setup instructions below)](#cloudcompare-setup)
 - **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance)
 
 ### Dependencies
