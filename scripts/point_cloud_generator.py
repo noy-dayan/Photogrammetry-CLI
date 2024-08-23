@@ -903,7 +903,7 @@ class PointCloudGenerator:
         print(cmd_line)
         os.system(cmd_line)
 
-    def convert_mesh_to_cloud(self, method='POINTS', parameter=2000000):
+    def convert_mesh_to_cloud(self, method='POINTS', parameter=1_000_000):
         """
         Convert a textured mesh to a point cloud using CloudCompare.
 
@@ -946,6 +946,7 @@ class PointCloudGenerator:
 
             # Create the full file path
             stats_file_path = f"{self.project_path}\\gpc_stats.txt"
+            mesh_file_path = f"{self.project_path}\\tasks\\11_texturing\\texturedMesh.obj"
 
             # Reset file content
             clear_file(stats_file_path)
@@ -966,14 +967,10 @@ class PointCloudGenerator:
             append_file(stats_file_path, f"texturing : {measure_run_time(self.run_11_texturing, textureSide=4096, downscale=4)[0]}")
 
             try:
+
                 # Convert the final mesh to a point cloud, write elapsed time of each convertion into gpc_stats.txt
                 append_file(stats_file_path, f"════════════════════════════════════\n"
-                                            f"meshToCloud_density : {measure_run_time(self.convert_mesh_to_cloud, method='DENSITY', parameter=200_000)[0]}\n"
-                                            f"meshToCloud_2_000_000 : {measure_run_time(self.convert_mesh_to_cloud, parameter=2_000_000)[0]}\n"
-                                            f"meshToCloud_1_500_000 : {measure_run_time(self.convert_mesh_to_cloud, parameter=1_500_000)[0]}\n"
-                                            f"meshToCloud_1_000_000 : {measure_run_time(self.convert_mesh_to_cloud, parameter=1_000_000)[0]}\n"
-                                            f"meshToCloud_750_000 : {measure_run_time(self.convert_mesh_to_cloud, parameter=750_000)[0]}\n"
-                                            f"meshToCloud_250_000 : {measure_run_time(self.convert_mesh_to_cloud, parameter=250_000)[0]}")
+                                            f"meshToCloud : {measure_run_time(self.convert_mesh_to_cloud, parameter=count_faces_in_obj(mesh_file_path))[0]}")
 
                 end_time = time.time()
                 hours, rem = divmod(end_time - start_time, 3600)

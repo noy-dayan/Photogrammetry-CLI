@@ -105,3 +105,46 @@ def append_file(file_path, text):
             file.write(text + '\n')
     except OSError as e:
         print_err(f"Failed to append to file {file_path}: {e}")
+
+
+def count_faces_in_obj(file_path):
+    """
+    Counts the number of faces in an OBJ file.
+
+    The function reads an OBJ file and counts the lines that start with 'f ', which denotes a face in the OBJ format.
+
+    Parameters:
+    - file_path (str): Path to the OBJ file.
+
+    Returns:
+    - int: The number of faces in the OBJ file. Returns 1,000,000 if the file is not found or an error occurs.
+
+    Raises:
+    - FileNotFoundError: If the specified file does not exist.
+    - Exception: For other unexpected errors while reading the file.
+
+    Notes:
+    - If an error occurs (e.g., the file is not found or another issue is encountered), the function logs an error message
+      and returns 1,000,000 as a fallback value. This behavior allows the calling function to handle such cases without
+      immediately terminating execution.
+    """
+    try:
+        with open(file_path, 'r') as file:
+            face_count = sum(1 for line in file if line.startswith('f '))
+        return face_count
+    except FileNotFoundError as e:
+        print_err(f"File not found: {e}")
+    except Exception as e:
+        print_err(f"An error occurred: {e}")
+    return 1_000_000
+
+
+def check_admin_permission():
+    try:
+        # Check for administrative privileges by attempting to create a folder in C:\
+        if not os.path.isdir("C:\\TestAdminPermission"):
+            os.makedirs("C:\\TestAdminPermission")
+        os.rmdir("C:\\TestAdminPermission")
+        return True
+    except PermissionError:
+        return False

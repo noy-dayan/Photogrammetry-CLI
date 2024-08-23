@@ -1,55 +1,34 @@
-import os
-import subprocess
 import pyCloudCompare as pcc
 from video_to_images_generator import extract_frames
 from user_manual import *
 from point_cloud_generator import PointCloudGenerator
 from utils import *
-import open3d as o3d
-import numpy as np
 import shlex
 
 
-def check_admin_permission():
-    try:
-        # Check for administrative privileges by attempting to create a folder in C:\
-        if not os.path.isdir("C:\\TestAdminPermission"):
-            os.makedirs("C:\\TestAdminPermission")
-        os.rmdir("C:\\TestAdminPermission")
-        return True
-    except PermissionError:
-        return False
-
-
-def exec_cmd(command):
-    try:
-        # Use subprocess.Popen to capture output in real time
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        for line in process.stdout:
-            print(line, end='')
-        process.stdout.close()
-        process.wait()
-        if process.returncode != 0:
-            for line in process.stderr:
-                print(line, end='')
-        process.stderr.close()
-    except subprocess.CalledProcessError as e:
-        print_err(e)
-    except Exception as e:
-        print_err(e)
-
-
-def run_batch_file_and_command(batch_file, command):
-    try:
-        # Call the batch file and command directly
-        exec_cmd(f'call {batch_file} && {command}')
-    except subprocess.CalledProcessError as e:
-        print_err(e)
-    except Exception as e:
-        print_err(e)
-
-
 def video_to_image(args):
+    """
+    Extracts frames from a video and saves them to a specified project directory.
+
+    Parameters:
+    - args (list): Command-line arguments passed by the user. Expected arguments:
+        - args[1] (str): Path to the input video file.
+        - args[2] (str): Path to the project directory where frames will be saved.
+        - args[3] (int, optional): Maximum number of frames to extract (default is 100).
+        - args[4] (int, optional): Maximum allowed overlap percentage between frames (default is 6).
+        - args[5] (float, optional): SSIM threshold to determine frame similarity (default is 0.95).
+
+    Returns:
+    - int: Status code (2 for help message, 1 for error, None for success).
+
+    This function extracts optimal frames from a video based on structural similarity (SSIM)
+    and overlap criteria and saves them in the specified project directory.
+    It provides flexibility in adjusting the number of frames, overlap percentage, and SSIM threshold.
+
+    Note:
+    - To display help, use `-h` or `-help` as the second argument.
+    - Requires the `video_to_images_generator`, `user_manual`, and `utils` modules.
+    """
     if len(args) == 2 and (args[1] == "-h" or args[1] == "-help"):
         help_to_string("v2i_help")
         return 2
@@ -76,6 +55,23 @@ def video_to_image(args):
 
 
 def generate_point_cloud(args):
+    """
+    Generates a point cloud from images in a specified project directory.
+
+    Parameters:
+    - args (list): Command-line arguments passed by the user. Expected arguments:
+        - args[1] (str): Path to the project directory containing the 'images' folder.
+
+    Returns:
+    - int: Status code (2 for help message, 1 for error, None for success).
+
+    This function generates a point cloud from the images located in the specified project directory.
+    It requires that the directory contains a folder named 'images'.
+
+    Note:
+    - To display help, use `-h` or `-help` as the second argument.
+    - Requires the `point_cloud_generator` and `user_manual` modules.
+    """
     if len(args) == 2 and (args[1] == "-h" or args[1] == "-help"):
         help_to_string("gpc_help")
         return 2
@@ -90,6 +86,25 @@ def generate_point_cloud(args):
 
 
 def combine_point_clouds(args):
+    """
+    Combines two point clouds using ICP alignment and saves the merged result.
+
+    Parameters:
+    - args (list): Command-line arguments passed by the user. Expected arguments:
+        - args[1] (str): Path to the first point cloud file.
+        - args[2] (str): Path to the second point cloud file.
+        - args[3] (str): Path to save the merged point cloud.
+
+    Returns:
+    - int: Status code (2 for help message, 1 for error, None for success).
+
+    This function combines two point clouds by aligning them using Iterative Closest Point (ICP)
+    and then merging them. The merged cloud is saved in the specified output file.
+
+    Note:
+    - To display help, use `-h` or `-help` as the second argument.
+    - Requires `pyCloudCompare` and `user_manual` modules.
+    """
     if len(args) == 2 and (args[1] == "-h" or args[1] == "-help"):
         help_to_string("cpc_help")
         return 2
@@ -98,28 +113,52 @@ def combine_point_clouds(args):
         print_err("Please provide paths to two point clouds.")
         return 1
 
-    cloud1_path = args[1]
-    cloud2_path = args[2]
-    output_path = r"C:\Users\StrikeOver.DESKTOP-HNIMD1Q\Desktop\Photogrammetry-CLI\test\combined_cloud.obj"
+    elif len(args) < 4:
+        print_err("Please provide path to output cloud file.")
+        return 1
 
-    # Check if CloudCompare is installed
-    #if shutil.which("CloudCompare") is None:
-    #print("[ERROR] CloudCompare is not installed or not in the system's PATH.")
-    #return 1
+    # Remove '.ply' extension if present
+    output_file = args[3]
+    if output_file.lower().endswith('.ply'):
+        output_file = output_file[:-4]
 
-    cc_cmd = pcc.CloudCompareCLI().new_command()
-    #cc_cmd.silent()
-    cc_cmd.open(cloud1_path)
-    cc_cmd.open(cloud2_path)
-    cc_cmd.icp(min_error_diff=2, iter_=100, overlap=40, adjust_scale=True)
-    #cc_cmd.merge_meshes()
-    #cc_cmd.mesh_export_format(pcc.MESH_EXPORT_FORMAT.OBJ)
-    cc_cmd.auto_save(on_off=True)
-    #cc_cmd.save_meshes(output_path)
-    cc_cmd.execute()
+    try:
+        cc_cmd = pcc.CloudCompareCLI().new_command()
+        #cc_cmd.silent()
+        cc_cmd.open(args[1])
+        cc_cmd.open(args[2])
+        cc_cmd.icp(iter_=10_000, overlap=40)
+        cc_cmd.merge_clouds()
+        cc_cmd.cloud_export_format(pcc.CLOUD_EXPORT_FORMAT.PLY)
+        cc_cmd.save_clouds(output_file)
+        print(cc_cmd.to_cmd())
+        if cc_cmd.execute() == 0:
+            print("Point clouds merged successfully.")
+        else:
+            print_err("Failed to merge point clouds.")
+
+    except Exception as e:
+        print_err(e)
 
 
 def cli(cmd):
+    """
+    Command-line interface (CLI) for executing video and point cloud processing tasks.
+
+    Parameters:
+    - cmd (str): The command string entered by the user.
+
+    This function processes user commands and calls the appropriate function based on the input.
+    It supports video frame extraction, point cloud generation, and point cloud combination.
+
+    Commands:
+    - `video2images`, `v2i`: Extracts frames from a video.
+    - `generatePointCloud`, `gpc`: Generates a point cloud from images.
+    - `combinePointClouds`, `cpc`: Combines two point clouds.
+    - `-h`, `-help`: Displays help information.
+    - `-e`, `-stop`, `-quit`, `-exit`: Exits the CLI.
+    """
+
     cmd = cmd.strip()
     args = shlex.split(cmd)
 
