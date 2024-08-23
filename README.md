@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ### Meshroom's AliceVision Setup
 
-1. **Download Meshroom:**
+1. **Download Meshroom Zip File:**
    - Download Meshroom from the following link:  
      [Meshroom v2023.3.0 for Windows 64-bit](https://github.com/alicevision/Meshroom/releases/download/v2023.3.0/Meshroom-2023.3.0-win64.zip)
 
@@ -58,11 +58,11 @@ pip install -r requirements.txt
 
 ### CloudCompare Setup
 
-1. **Download CloudCompare:**
+1. **Download CloudCompare Setup File:**
    - Download CloudCompare from the following link:  
      [CloudCompare v2.13.2 for Windows 64-bit](https://cloudcompare-org.danielgm.net/release/CloudCompare_v2.13.2_setup_x64.exe)
 
-2. **Extract the Zip File:**
+2. **Install CloudCompare:**
    - Run the downloaded setup file and install CloudCompare to the following directory: `C:\\Program Files\\CloudCompare`
 
 ## Usage
