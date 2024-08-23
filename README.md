@@ -23,7 +23,7 @@ Photogrammetry-CLI is a command-line interface tool designed for photogrammetry 
 - **Operating System:** Windows (only supported on Windows)
 - **Python Version:** Python 3.11 (tested on this version but might work on other 3.x versions)
 - **Meshroom's AliceVision:** Required for photogrammetry processing (see setup instructions below)
-- **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance but not necessary)
+- **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance)
 
 ### Dependencies
 Before running the CLI, you'll need to install the required Python dependencies. You can do this using pip. First, make sure you have pip installed and updated, then run:
