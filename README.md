@@ -14,6 +14,8 @@ Photogrammetry-CLI is a command-line interface tool designed for photogrammetry 
   - [video2images](#video2images)
   - [generatePointCloud](#generatepointcloud)
   - [combinePointClouds](#combinepointclouds)
+- [License](#license)
+- [Authors](#authors)
 
 ## Installation
 
