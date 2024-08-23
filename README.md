@@ -4,6 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE.md)
 [![Python Version](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/downloads/)
+[![Meshroom Version](https://img.shields.io/badge/meshroom-2023.3.0-purple.svg)](https://github.com/alicevision/Meshroom/releases/tag/v2023.3.0)
 
 ## Introduction
 
