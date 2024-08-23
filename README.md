@@ -1,7 +1,9 @@
-# Photogrammetry-CLI
+<p align='center'>
+  <img src= 'https://github.com/user-attachments/assets/daefddc1-c954-4be4-826a-cd1d75dfe90d'/>
+</p>
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE.md)
+[![Python Version](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/downloads/)
 
 ## Introduction
 
