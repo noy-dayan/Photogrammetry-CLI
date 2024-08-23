@@ -65,7 +65,8 @@ pip install -r requirements.txt
      [CloudCompare v2.13.2 for Windows 64-bit](https://cloudcompare-org.danielgm.net/release/CloudCompare_v2.13.2_setup_x64.exe)
 
 2. **Install CloudCompare:**
-   - Run the downloaded setup file and install CloudCompare to the following directory: `C:\\Program Files\\CloudCompare`
+   - Run the downloaded setup file and install CloudCompare to the following directory:
+     `C:\Program Files\CloudCompare`
 
 ## Usage
 To start using the CLI, simply run the `run.bat` file or execute the `run.py` script directly. This will initiate the CLI and provide access to the available commands.
