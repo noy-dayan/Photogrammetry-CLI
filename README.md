@@ -69,7 +69,7 @@ Extracts frames from a video file based on structural similarity (SSIM) and over
 
 **Arguments:**
 - `<video_path>`: Path to the input video file (must be in `.mp4` format).
-- `<project_path>`: Path to the output folder where frames will be saved (a subfolder named 'images' will be created).
+- `<project_path>`: Path to the output folder where frames will be saved (a subfolder named `images` will be created).
 - `[max_frames]` (optional): Maximum number of frames to extract (default is 100).
 - `[max_overlap_percentage]` (optional): Maximum allowed percentage overlap with previous frames (default is 6).
 - `[ssim_threshold]` (optional): SSIM threshold below which frames are considered different (default is 0.95).
