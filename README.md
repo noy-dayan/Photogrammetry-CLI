@@ -65,7 +65,7 @@ To start using the CLI, simply run the `run.bat` file or execute the `run.py` sc
 
 ### video2images
 
-Extracts frames from a video file based on structural similarity (SSIM) and overlap criteria. This command saves the extracted frames to the specified output folder.
+Extracts frames from a video file based on structural similarity (SSIM) and overlap criteria.
 
 **Arguments:**
 - `<video_path>`: Path to the input video file (must be in `.mp4` format).
