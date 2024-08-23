@@ -93,7 +93,7 @@ generatePointCloud "path\\project\\dir"
 
  ### combinePointClouds
 
-Combines two point clouds into a single point cloud using the Iterative Closest Point (ICP) algorithm.
+Combines two point clouds into a single point cloud using the Iterative Closest Point (ICP) algorithm, assuming the point clouds are roughly aligned and have overlapping regions.
 
 **Arguments:**
 - `<cloud1_path>`: Path to the first point cloud file.
