@@ -140,6 +140,22 @@ def count_faces_in_obj(file_path):
 
 
 def check_admin_permission():
+    """
+    Checks if the current script is running with administrative privileges.
+
+    Returns:
+    - bool: True if the script has administrative privileges, False otherwise.
+
+    This function attempts to create and then remove a directory in the root of the C: drive to test if the
+    current process has administrative permissions. If it succeeds, the script is running with admin rights.
+    If it fails with a `PermissionError`, it indicates that the script does not have sufficient permissions.
+
+    Note:
+    - This function is intended for use on Windows systems where the ability to write to the C: drive root
+      is restricted to administrators.
+    - Use this function to check if elevated privileges are available before performing operations
+      that require admin rights.
+    """
     try:
         # Check for administrative privileges by attempting to create a folder in C:\
         if not os.path.isdir("C:\\TestAdminPermission"):
@@ -148,3 +164,4 @@ def check_admin_permission():
         return True
     except PermissionError:
         return False
+

@@ -74,7 +74,7 @@ def general_help():
     To get detailed help for a specific command, Type: \033[32m<command>\033[0m \033[35m-help\033[0m
     Type \033[31m-exit\033[0m to close the program.
     
-    \033[31mDisclaimer:\033[0m This tool requires a GPU for optimal performance and is best suited for aerial drone imagery. Using it for other purposes may cause unexpected errors.
+    \033[31mDisclaimer:\033[0m This tool requires a Nvidia GPU that supports CUDA for optimal performance and is best suited for aerial drone imagery. Using it for other purposes may cause unexpected errors.
 \033[35m═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\033[0m""")
 
 
