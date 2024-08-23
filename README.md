@@ -5,10 +5,10 @@
 [![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE.md)
 [![Python Version](https://img.shields.io/badge/python-3.11-purple.svg)](https://www.python.org/downloads/)
 [![Meshroom Version](https://img.shields.io/badge/meshroom-2023.3.0-purple.svg)](https://github.com/alicevision/Meshroom/releases/tag/v2023.3.0)
-[![CloudCompare Version](https://img.shields.io/badge/cloudcompare-2.13.2-purple.svg)](https://cloudcompare-org.danielgm.net/release/CloudCompare_v2.13.2_setup_x64.exe)
+[![CloudCompare Version](https://img.shields.io/badge/cloudcompare-2.13.2-purple.svg)](https://cloudcompare-org.danielgm.net/release/)
 ## Introduction
 
-Photogrammetry-CLI is a command-line interface tool designed for photogrammetry tasks, including extracting frames from videos, generating point clouds from images, and combining point clouds into a unified model. Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for the photogrammetry pipeline, this tool is optimized for Windows and provides an easy way to process and analyze 3D data from video sources.
+Photogrammetry-CLI is a command-line interface tool designed for photogrammetry tasks, including extracting frames from videos, generating point clouds from images, and combining point clouds into a unified model. Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for the photogrammetry pipeline and [CloudCompare](https://www.danielgm.net/cc/) for ICP alignment and mesh to cloud convertion, this tool is optimized for Windows and provides an easy way to process and analyze 3D data from video sources.
 
 ## Table of Contents
 - [Installation](#installation)
