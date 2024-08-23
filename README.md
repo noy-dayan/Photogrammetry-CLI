@@ -1,6 +1,6 @@
 # Photogrammetry-CLI
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 [![Python Version](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 
 ## Introduction
@@ -95,3 +95,11 @@ Combines two point clouds into a single point cloud using the Iterative Closest 
 ```bash
 combinePointClouds "path\\cloud1.ply" "path\\cloud2.ply" "path\\output.ply"
  ```
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+
+## Authors
+- [@noy-dayan](https://github.com/noy-dayan) (Project Manager)
+- [@AvivShevach](https://github.com/AvivShevach)
+- [@neryaRez](https://github.com/neryaRez)
