@@ -46,6 +46,7 @@ pip install -r requirements.txt
 
 4. **Run Configuration Script:**
    - Navigate to the project directory and run the `configure.bat` script to set the `ALICEVISION_ROOT` environment variable:
+     
      ```bash
      configure.bat
      ```
@@ -53,6 +54,9 @@ pip install -r requirements.txt
 
 ## Usage
 To start using the CLI, simply run the `run.bat` file or execute the `run.py` script directly. This will initiate the CLI and provide access to the available commands.
+ ```bash
+ run.bat
+ ```
 
 ## Commands
 
