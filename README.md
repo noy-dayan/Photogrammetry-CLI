@@ -14,6 +14,10 @@ Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for 
 
 ## Table of Contents
 - [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Dependencies](#dependencies)
+  - [Meshroom's AliceVision Setup](#meshrooms-alicevision-setup)
+  - [CloudCompare Setup](#cloudcompare-setup)
 - [Usage](#usage)
 - [Commands](#commands)
   - [video2images](#video2images)
