@@ -100,6 +100,11 @@ video2images "path\\video.mp4" "path\\project\\dir" 200 5 0.90
 
 Generates a point cloud from the extracted frames using the Meshroom's AliceVision photogrammetry pipeline.
 
+<p align='center'>
+  <img src= 'https://github.com/user-attachments/assets/117af2ca-5a9a-45cb-ae13-859d2cb508e9'/>
+</p>
+
+
 **Arguments:**
 - `<project_path>`: Path to the project folder containing the images folder.
 
