@@ -76,7 +76,11 @@ pip install -r requirements.txt
 To start using the CLI, simply run the `run.bat` file or execute the `run.py` script directly. This will initiate the CLI and provide access to the available commands.
  ```bash
  run.bat
- ```
+```
+
+<p align='center'>
+  <img src= 'https://github.com/user-attachments/assets/0ed62e4a-a2f0-4d7f-b6f6-40058f886f15'/>
+</p>
 
 ## Commands
 
