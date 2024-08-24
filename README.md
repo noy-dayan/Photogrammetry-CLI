@@ -88,6 +88,13 @@ To start using the CLI, simply run the `run.bat` file or execute the `run.py` sc
 
 Extracts frames from a video file based on structural similarity (SSIM) and overlap criteria.
 
+
+
+<p align='center'>
+  <img src='https://github.com/user-attachments/assets/27500c89-ce57-43f1-9f7b-047ba14029f9'/>
+</p>
+
+
 **Arguments:**
 - `<video_path>`: Path to the input video file (must be in `.mp4` format).
 - `<project_path>`: Path to the output folder where frames will be saved (a subfolder named `images` will be created).
