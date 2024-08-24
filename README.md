@@ -91,7 +91,7 @@ Extracts frames from a video file based on structural similarity (SSIM) and over
 
 
 <p align='center'>
-  <img src='https://github.com/user-attachments/assets/27500c89-ce57-43f1-9f7b-047ba14029f9'/>
+  <img src='https://github.com/user-attachments/assets/27500c89-ce57-43f1-9f7b-047ba14029f9' />
 </p>
 
 
@@ -112,7 +112,7 @@ video2images "path\\video.mp4" "path\\project\\dir" 200 5 0.90
 Generates a point cloud from the extracted frames using the Meshroom's AliceVision photogrammetry pipeline.
 
 <p align='center'>
-  <img src= 'https://github.com/user-attachments/assets/117af2ca-5a9a-45cb-ae13-859d2cb508e9'/>
+  <img src= 'https://github.com/user-attachments/assets/117af2ca-5a9a-45cb-ae13-859d2cb508e9' width='1000' height='auto'/>
 </p>
 
 
