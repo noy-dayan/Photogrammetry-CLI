@@ -39,19 +39,40 @@ def video_to_image(args):
 
     video_path = args[1]
     output_path = f"{args[2]}\\images"
+
+    # Default values
     max_frames = 100
     max_overlap_percentage = 6
     ssim_threshold = 0.95
 
-    if len(args) > 3 and args[3] is not None:
-        max_frames = int(args[3])
-    if len(args) > 4 and args[4] is not None:
-        max_overlap_percentage = int(args[4])
-    if len(args) > 5 and args[5] is not None:
-        ssim_threshold = float(args[5])
+    # Parse and validate optional arguments
+    if len(args) > 3:
+        try:
+            max_frames = int(args[3])
+        except ValueError:
+            print_err("Invalid value for maximum number of frames. Please provide an integer.")
+            return 1
 
-    extracted_frames = extract_frames(video_path, output_path, max_frames, max_overlap_percentage,
-                                      ssim_threshold)
+    if len(args) > 4:
+        try:
+            max_overlap_percentage = int(args[4])
+        except ValueError:
+            print_err("Invalid value for maximum overlap percentage. Please provide an integer.")
+            return 1
+
+    if len(args) > 5:
+        try:
+            ssim_threshold = float(args[5])
+        except ValueError:
+            print_err("Invalid value for SSIM threshold. Please provide a float.")
+            return 1
+
+    try:
+        extracted_frames = extract_frames(video_path, output_path, max_frames,
+                                          max_overlap_percentage, ssim_threshold)
+    except Exception as e:
+        print_err(f"An error occurred while extracting frames: {e}")
+        return 1
 
 
 def generate_point_cloud(args):
@@ -94,6 +115,8 @@ def combine_point_clouds(args):
         - args[1] (str): Path to the first point cloud file.
         - args[2] (str): Path to the second point cloud file.
         - args[3] (str): Path to save the merged point cloud.
+        - args[4] (int, optional): Number of iterations for ICP (default: 10,000).
+        - args[5] (int, optional): Overlap percentage for ICP (default: 40). Must be between 10 and 100.
 
     Returns:
     - int: Status code (2 for help message, 1 for error, None for success).
@@ -117,6 +140,28 @@ def combine_point_clouds(args):
         print_err("Please provide path to output cloud file.")
         return 1
 
+    # Default values for ICP
+    icp_iterations = 10_000
+    icp_overlap = 40
+
+    # Parse optional ICP parameters if provided
+    if len(args) > 4:
+        try:
+            icp_iterations = int(args[4])
+        except ValueError:
+            print_err("Invalid value for ICP iterations. Please provide an integer.")
+            return 1
+
+    if len(args) > 5:
+        try:
+            icp_overlap = int(args[5])
+            if not (10 <= icp_overlap <= 100):
+                print_err("ICP overlap percentage must be between 10 and 100.")
+                return 1
+        except ValueError:
+            print_err("Invalid value for ICP overlap. Please provide a float.")
+            return 1
+
     # Remove '.ply' extension if present
     output_file = args[3]
     if output_file.lower().endswith('.ply'):
@@ -127,7 +172,7 @@ def combine_point_clouds(args):
         #cc_cmd.silent()
         cc_cmd.open(args[1])
         cc_cmd.open(args[2])
-        cc_cmd.icp(iter_=10_000, overlap=40)
+        cc_cmd.icp(iter_=icp_iterations, overlap=icp_overlap)
         cc_cmd.merge_clouds()
         cc_cmd.cloud_export_format(pcc.CLOUD_EXPORT_FORMAT.PLY)
         cc_cmd.save_clouds(output_file)
