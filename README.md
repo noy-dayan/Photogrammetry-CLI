@@ -132,10 +132,12 @@ Combines two point clouds into a single point cloud using the Iterative Closest 
 - `<cloud1_path>`: Path to the first point cloud file.
 - `<cloud2_path>`: Path to the second point cloud file.
 - `<output_path>`: Path to the cloud output file.
+- `[icp_iterations]` (optional): Number of iterations for ICP alignment (default is 10,000).
+- `[icp_overlap]` (optional): Overlap percentage for ICP (default is 40). Must be an integer between 10 and 100.
 
 **Example:**
 ```bash
-combinePointClouds "path\\cloud1.ply" "path\\cloud2.ply" "path\\output.ply"
+combinePointClouds "path\\cloud1.ply" "path\\cloud2.ply" "path\\output.ply" 5000 30
  ```
 
 ## License
