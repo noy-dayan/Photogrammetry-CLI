@@ -57,7 +57,7 @@ pip install -r requirements.txt
    - Drag the `aliceVision` folder to the root of the `Photogrammetry-CLI` directory.
 
 4. **Run Configuration Script:**
-   - Navigate to the project directory and run the `configure.bat` script to set the `ALICEVISION_ROOT` environment variable:
+   - Navigate to the project directory and run the `configure.bat` script with administrator privileges:
      
      ```bash
      configure.bat
