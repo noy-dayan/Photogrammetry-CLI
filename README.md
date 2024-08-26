@@ -15,7 +15,7 @@ Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for 
 ## Table of Contents
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
-  - [Dependencies](#dependencies)
+  - [Source Code and Dependencies](#source-code-and-dependencies)
   - [Meshroom's AliceVision Setup](#meshrooms-alicevision-setup)
   - [CloudCompare Setup](#cloudcompare-setup)
 - [Usage](#usage)
@@ -35,9 +35,11 @@ Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for 
 - **CloudCompare:** Required for ICP alignment and mesh-to-cloud conversion [(refer to setup instructions below)](#cloudcompare-setup)
 - **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance)
 
-### Dependencies
-Before running the CLI, you'll need to install the required Python dependencies. You can do this using pip. First, make sure you have pip installed and updated, then run:
+### Source Code and Dependencies
+To get started with the CLI, you need to clone the source code and install the required dependencies. Ensure that pip is installed and up to date before proceeding. Then, execute the following commands:
 ```bash
+git clone --recursive https://github.com/noy-dayan/Photogrammetry-CLI.git
+cd Photogrammetry-CLI
 pip install -r requirements.txt
 ```
 
@@ -52,7 +54,7 @@ pip install -r requirements.txt
 
 3. **Move the `aliceVision` Folder:**
    - Locate the `aliceVision` folder inside the extracted Meshroom directory.
-   - Drag the `aliceVision` folder to the root of this project’s directory.
+   - Drag the `aliceVision` folder to the root of the `Photogrammetry-CLI` directory.
 
 4. **Run Configuration Script:**
    - Navigate to the project directory and run the `configure.bat` script to set the `ALICEVISION_ROOT` environment variable:
