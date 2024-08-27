@@ -81,7 +81,7 @@ To start using the CLI, simply run the `run.bat` file or execute the `run.py` sc
 ```
 
 <p align='center'>
-  <img src= 'https://github.com/user-attachments/assets/0ed62e4a-a2f0-4d7f-b6f6-40058f886f15'/>
+  <img src= 'https://github.com/user-attachments/assets/33e7343c-ecee-4622-b3e6-18c8cc707f4f'/>
 </p>
 
 ## Commands
