@@ -33,7 +33,7 @@ Utilizing [Meshroom's AliceVision](https://github.com/alicevision/Meshroom) for 
 - **Python Version:** Python 3.11 (tested on this version but might work on other 3.x versions)
 - **Meshroom's AliceVision:** Required for photogrammetry processing [(refer to setup instructions below)](#meshrooms-alicevision-setup)
 - **CloudCompare:** Required for ICP alignment and mesh-to-cloud conversion [(refer to setup instructions below)](#cloudcompare-setup)
-- **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance)
+- **GPU:** NVIDIA GPU with CUDA support (recommended for optimal performance; absence of a CUDA-capable NVIDIA GPU might cause unexpected issues)
 
 ### Source Code and Dependencies
 To get started with the CLI, you need to clone the source code and install the required dependencies. Ensure that pip is installed and up to date before proceeding. Then, execute the following commands:
